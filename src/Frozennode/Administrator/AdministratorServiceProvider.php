@@ -8,6 +8,7 @@ use Frozennode\Administrator\Fields\Factory as FieldFactory;
 use Frozennode\Administrator\Config\Factory as ConfigFactory;
 use Frozennode\Administrator\Actions\Factory as ActionFactory;
 use Frozennode\Administrator\DataTable\Columns\Factory as ColumnFactory;
+use Illuminate\Support\Facades\Session;
 
 class AdministratorServiceProvider extends ServiceProvider {
 
@@ -139,9 +140,9 @@ class AdministratorServiceProvider extends ServiceProvider {
 	 */
 	public function setLocale()
 	{
-		if ($locale = $this->app->session->get('administrator_locale'))
+		if ($locale = Session::get('administrator_locale'))
 		{
-			$this->app->setLocale($locale);
+			App::setLocale($locale);
 		}
 	}
 
